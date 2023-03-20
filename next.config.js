@@ -5,7 +5,7 @@ module.exports = {
     return [
       {
         source: '/github',
-        destination: 'https://github.com/juancamiloqhz/openai-quickstart-node',
+        destination: 'https://github.com/juancamiloqhz/ai-workshop',
         permanent: false,
       },
     ]

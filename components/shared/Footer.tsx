@@ -37,7 +37,7 @@ export default function Footer() {
           </svg>
         </Link>
         <Link
-          href="https://github.com/juancamiloqhz/openai-quickstart-node"
+          href="https://github.com/juancamiloqhz/ai-workshop"
           className="group"
           aria-label="TaxPal on GitHub"
         >

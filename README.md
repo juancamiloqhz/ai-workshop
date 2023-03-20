@@ -1,9 +1,6 @@
-# OpenAI API Quickstart - Node.js example app
+# AI Workshop
 
-This is an example pet name generator app used in the OpenAI API [quickstart tutorial](https://platform.openai.com/docs/quickstart). It uses the [Next.js](https://nextjs.org/) framework with [React](https://reactjs.org/). Check out the tutorial or follow the instructions below to get set up.
-
-![Text box that says name my pet with an icon of a dog](https://user-images.githubusercontent.com/10623307/213887080-b2bc4645-7fdb-4dbd-ae42-efce00d0dc29.png)
-
+This is a collection of AI examples. It uses the [Next.js](https://nextjs.org/) framework with [React](https://reactjs.org/). Check out the tutorial or follow the instructions below to get set up.
 
 ## Setup
 
@@ -11,34 +8,53 @@ This is an example pet name generator app used in the OpenAI API [quickstart tut
 
 2. Clone this repository
 
-3. Navigate into the project directory
-
    ```bash
-   $ cd openai-quickstart-node
+   git clone https://github.com/juancamiloqhz/ai-workshop
    ```
 
-4. Install the requirements
+3. Creating a account on Replicate to get an API key.
+
+   1. Go to [Replicate](https://replicate.com/) to make an account.
+   2. Click on your profile picture in the top right corner, and click on "Dashboard".
+   3. Click on "Account" in the navbar. And, here you can find your API token, copy it.
+
+4. Install the dependencies
 
    ```bash
-   $ npm install
+   npm install
    ```
 
 5. Make a copy of the example environment variables file
 
-   On Linux systems: 
+   On Linux systems:
+
    ```bash
-   $ cp .env.example .env
+   cp .env.example .env
    ```
+
    On Windows:
+
    ```powershell
-   $ copy .env.example .env
+   copy .env.example .env
    ```
-6. Add your [API key](https://platform.openai.com/account/api-keys) to the newly created `.env` file
+
+6. Add your [OpenAI API key](https://platform.openai.com/account/api-keys) to the newly created `.env` file
 
 7. Run the app
 
    ```bash
-   $ npm run dev
+   npm run dev
    ```
 
-You should now be able to access the app at [http://localhost:3000](http://localhost:3000)! For the full context behind this example app, check out the [tutorial](https://platform.openai.com/docs/quickstart).
+8. Auth setup
+
+   1. Use `openssl rand -base64 32` to generate NEXTAUTH_SECRET
+   2. Add DB URL and SHADOW DB URL from Neon
+   3. Create a new project in console.cloud.google.com
+   4. Click configure consent screen in API credentials page and click external
+   5. Add an app name, do not upload logo, add authorized domain
+   6. Publish app
+   7. Create credentials -> Oauth client ID
+   8. Run npx prisma db push && prisma migrate dev && prisma generate
+
+You should now be able to access the app at [http://localhost:3000](http://localhost:3000)! For the full context behind this example app.
