@@ -1,11 +1,11 @@
 import { NextPage } from 'next'
-import Page from '@/components/shared/Layouts/Page'
 import Text from '@/components/shared/Text'
 import Chat from '@/components/chat/Chat'
+import Layout from '@/components/shared/layout'
 
 const ChatPage: NextPage = () => {
   return (
-    <Page className="flex flex-col gap-12" title="Chat">
+    <Layout>
       <section className="flex flex-col gap-6">
         <Text variant="h1">OpenAI GPT-3 text model usage example</Text>
         <Text className="text-zinc-600">
@@ -20,7 +20,7 @@ const ChatPage: NextPage = () => {
           <Chat />
         </div>
       </section>
-    </Page>
+    </Layout>
   )
 }
 

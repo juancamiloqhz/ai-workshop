@@ -2,8 +2,8 @@ import Head from 'next/head'
 import { useState } from 'react'
 import styles from './index.module.css'
 import Image from 'next/image'
-import Page from '@/components/shared/Layouts/Page'
 import { Button } from '@/components/chat/Button'
+import Layout from '@/components/shared/layout'
 
 export default function NameMyPet() {
   const [loading, setLoading] = useState(false)
@@ -43,7 +43,7 @@ export default function NameMyPet() {
   }
 
   return (
-    <Page title="Name my pet">
+    <Layout>
       <Head>
         <title>Name My Pet</title>
         <link rel="icon" href="/dog.png" />
@@ -72,6 +72,6 @@ export default function NameMyPet() {
         </form>
         <div className={styles.result}>{result}</div>
       </div>
-    </Page>
+    </Layout>
   )
 }

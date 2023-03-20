@@ -4,9 +4,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Toaster, toast } from 'react-hot-toast'
 import DropDown, { VibeType } from '@/components/twitter-bio/DropDown'
-import Github from '@/components/shared/GitHub'
-import LoadingDots from '@/components/shared/LoadingDots'
-import Page from '@/components/shared/Layouts/Page'
+import { Github, LoadingDots } from '@/shared/icons'
+import Layout from '@/components/shared/layout'
 
 const TwitterBio: NextPage = () => {
   const [loading, setLoading] = React.useState(false)
@@ -70,10 +69,7 @@ const TwitterBio: NextPage = () => {
   }
 
   return (
-    <Page
-      title="Twitter Bio"
-      className="flex max-w-5xl mx-auto flex-col items-center justify-center py-2"
-    >
+    <Layout>
       <Head>
         <title>Twitter Bio Generator</title>
         <link rel="icon" href="/favicon.ico" />
@@ -186,7 +182,7 @@ const TwitterBio: NextPage = () => {
           )}
         </div>
       </div>
-    </Page>
+    </Layout>
   )
 }
 

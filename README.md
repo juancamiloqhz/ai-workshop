@@ -12,7 +12,7 @@ This is a collection of AI examples. It uses the [Next.js](https://nextjs.org/) 
    git clone https://github.com/juancamiloqhz/ai-workshop
    ```
 
-3. Creating a account on Replicate to get an API key.
+3. Creating an account on Replicate to get an API key.
 
    1. Go to [Replicate](https://replicate.com/) to make an account.
    2. Click on your profile picture in the top right corner, and click on "Dashboard".

@@ -10,7 +10,8 @@
       "@/pages/*": ["pages/*"],
       "@/lib/*": ["lib/*"],
       "@/utils/*": ["utils/*"],
-      "@/styles/*": ["styles/*"]
+      "@/styles/*": ["styles/*"],
+      "@/shared/*": ["components/shared/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
