@@ -1,15 +1,15 @@
-import Head from 'next/head'
+import Head from "next/head";
 
-const DOMAIN = 'https://ai.juancamiloqhz.com'
+const DOMAIN = "https://ai.juancamiloqhz.com";
 
 export default function Meta({
-  title = 'AI Workshop - Collection of examples with Artificial Intelligence',
-  description = 'AI Workshop is a collection of examples with Artificial Intelligence. 100% free and privacy friendly.',
+  title = "AI Workshop - Collection of examples with Artificial Intelligence",
+  description = "AI Workshop is a collection of examples with Artificial Intelligence. 100% free and privacy friendly.",
   image = `${DOMAIN}/api/og`,
 }: {
-  title?: string
-  description?: string
-  image?: string
+  title?: string;
+  description?: string;
+  image?: string;
 }) {
   return (
     <Head>
@@ -32,5 +32,5 @@ export default function Meta({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
     </Head>
-  )
+  );
 }

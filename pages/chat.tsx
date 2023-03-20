@@ -1,7 +1,7 @@
-import { NextPage } from 'next'
-import Text from '@/components/shared/Text'
-import Chat from '@/components/chat/Chat'
-import Layout from '@/components/shared/layout'
+import { NextPage } from "next";
+import Text from "@/components/shared/Text";
+import Chat from "@/components/chat/Chat";
+import Layout from "@/components/shared/layout";
 
 const ChatPage: NextPage = () => {
   return (
@@ -21,7 +21,7 @@ const ChatPage: NextPage = () => {
         </div>
       </section>
     </Layout>
-  )
-}
+  );
+};
 
-export default ChatPage
+export default ChatPage;

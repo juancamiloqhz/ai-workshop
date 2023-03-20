@@ -1,44 +1,43 @@
-import Head from 'next/head'
-import { useState } from 'react'
-import styles from './index.module.css'
-import Image from 'next/image'
-import { Button } from '@/components/chat/Button'
-import Layout from '@/components/shared/layout'
+import Head from "next/head";
+import { useState } from "react";
+import Image from "next/image";
+import { Button } from "@/components/chat/Button";
+import Layout from "@/components/shared/layout";
 
 export default function NameMyPet() {
-  const [loading, setLoading] = useState(false)
-  const [animalInput, setAnimalInput] = useState('')
-  const [result, setResult] = useState()
+  const [loading, setLoading] = useState(false);
+  const [animalInput, setAnimalInput] = useState("");
+  const [result, setResult] = useState();
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+    event.preventDefault();
     try {
-      setLoading(true)
-      const response = await fetch('/api/name-my-pet/generate', {
-        method: 'POST',
+      setLoading(true);
+      const response = await fetch("/api/name-my-pet/generate", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ animal: animalInput }),
-      })
+      });
 
-      const data = await response.json()
+      const data = await response.json();
       if (response.status !== 200) {
         throw (
           data.error ||
           new Error(`Request failed with status ${response.status}`)
-        )
+        );
       }
 
-      setResult(data.result)
-      setAnimalInput('')
-      setLoading(false)
+      setResult(data.result);
+      setAnimalInput("");
+      setLoading(false);
     } catch (err) {
-      const error = err as Error
+      const error = err as Error;
       // Consider implementing your own error handling logic here
-      console.error(error)
-      alert(error.message)
-      setLoading(false)
+      console.error(error);
+      alert(error.message);
+      setLoading(false);
     }
   }
 
@@ -55,7 +54,7 @@ export default function NameMyPet() {
           alt="Website Logo"
           width={34}
           height={34}
-          className={styles.icon}
+          // className={styles.icon}
         />
         <h3>Name my pet</h3>
         <form onSubmit={onSubmit} className="flex flex-col">
@@ -67,11 +66,15 @@ export default function NameMyPet() {
             onChange={(e) => setAnimalInput(e.target.value)}
           />
           <Button type="submit">
-            {loading ? 'Generating...' : 'Generate names'}
+            {loading ? "Generating..." : "Generate names"}
           </Button>
         </form>
-        <div className={styles.result}>{result}</div>
+        <div
+        // className={styles.result}
+        >
+          {result}
+        </div>
       </div>
     </Layout>
-  )
+  );
 }
