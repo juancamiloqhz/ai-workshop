@@ -5,8 +5,48 @@ import { motion } from "framer-motion";
 import { FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
 import Balancer from "react-wrap-balancer";
 import Card from "@/components/home/card";
+import React from "react";
 
 const Home: NextPage = () => {
+  React.useEffect(() => {
+    const cards = document.querySelectorAll(`.card`) as NodeListOf<HTMLElement>;
+    // Add the tails to each card
+    cards.forEach((card) => {
+      [`top`, `right`, `bottom`, `left`].forEach((side) => {
+        const tail = document.createElement(`div`);
+        tail.classList.add(`tail`, side);
+        card.appendChild(tail);
+      });
+      // if that card has no colours, add some
+      // if (!card.style.getPropertyValue(`--color1`)) {
+      card.style.setProperty(
+        `--color1`,
+        `hsl(${Math.random() * 360}, 100%, 50%)`,
+      );
+      card.style.setProperty(
+        `--color2`,
+        `hsl(${Math.random() * 360}, 100%, 50%)`,
+      );
+      // }
+    });
+
+    const interval = setInterval(() => {
+      cards.forEach((card) => {
+        // if (!card.style.getPropertyValue(`--color1`)) {
+        card.style.setProperty(
+          `--color1`,
+          `hsl(${Math.random() * 360}, 100%, 50%)`,
+        );
+        card.style.setProperty(
+          `--color2`,
+          `hsl(${Math.random() * 360}, 100%, 50%)`,
+        );
+        // }
+      });
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <Layout>
       <motion.div
@@ -39,27 +79,15 @@ const Home: NextPage = () => {
             different AI libraries.
           </Balancer>
         </motion.p>
-        <div className="flex flex-col">
-          <Link href="/name-my-pet">Name my pet</Link>
-          <Link href="/twitter-bio">Generate Twitter Bio</Link>
-          <Link href="/chat">Chat</Link>
-        </div>
       </motion.div>
       {/* here we are animating with Tailwind instead of Framer Motion because Framer Motion messes up the z-index for child components */}
-      <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        {examples.map(({ title, description }) => (
+      <div className="my-16 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 sm:grid-cols-2 lg:grid-cols-3 xl:px-0">
+        {examples.map(({ title, description, link }) => (
           <Card
             key={title}
             title={title}
             description={description}
-            // demo={
-            //   title === "Beautiful, reusable components" ? (
-            //     <ComponentGrid />
-            //   ) : (
-            //     demo
-            //   )
-            // }
-            // large={large}
+            link={link}
           />
         ))}
       </div>
@@ -71,56 +99,18 @@ export default Home;
 
 const examples = [
   {
-    title: "Beautiful, reusable components",
-    description:
-      "Pre-built beautiful, a11y-first components, powered by [Tailwind CSS](https://tailwindcss.com/), [Radix UI](https://www.radix-ui.com/), and [Framer Motion](https://framer.com/motion)",
-    // large: true,
+    title: "Chat",
+    description: "A simple chat app built with ChatGPT-3 turbo",
+    link: "/chat",
   },
   {
-    title: "Performance first",
-    description:
-      "Built on [Next.js](https://nextjs.org/) primitives like `@next/font` and `next/image` for stellar performance.",
-    // demo: <WebVitals />,
+    title: "Generate Twitter Bio",
+    description: "Generate a Twitter bio using GPT-3",
+    link: "/twitter-bio",
   },
   {
-    title: "One-click Deploy",
-    description:
-      "Jumpstart your next project by deploying Precedent to [Vercel](https://vercel.com/) in one click.",
-    // demo: (
-    //   <a href={DEPLOY_URL}>
-    //     {/* eslint-disable-next-line @next/next/no-img-element */}
-    //     <img
-    //       src="https://vercel.com/button"
-    //       alt="Deploy with Vercel"
-    //       width={120}
-    //     />
-    //   </a>
-    // ),
-  },
-  {
-    title: "Built-in Auth + Database",
-    description:
-      "Precedent comes with authentication and database via [Auth.js](https://authjs.dev/) + [Prisma](https://prisma.io/)",
-    // demo: (
-    //   <div className="flex items-center justify-center space-x-20">
-    //     <Image alt="Auth.js logo" src="/authjs.webp" width={50} height={50} />
-    //     <Image alt="Prisma logo" src="/prisma.svg" width={50} height={50} />
-    //   </div>
-    // ),
-  },
-  {
-    title: "Hooks, utilities, and more",
-    description:
-      "Precedent offers a collection of hooks, utilities, and `@vercel/og`",
-    // demo: (
-    //   <div className="grid grid-flow-col grid-rows-3 gap-10 p-10">
-    //     <span className="font-mono font-semibold">useIntersectionObserver</span>
-    //     <span className="font-mono font-semibold">useLocalStorage</span>
-    //     <span className="font-mono font-semibold">useScroll</span>
-    //     <span className="font-mono font-semibold">nFormatter</span>
-    //     <span className="font-mono font-semibold">capitalize</span>
-    //     <span className="font-mono font-semibold">truncate</span>
-    //   </div>
-    // ),
+    title: "Name My Pet",
+    description: "Generate a name for your pet using GPT-3",
+    link: "/name-my-pet",
   },
 ];
