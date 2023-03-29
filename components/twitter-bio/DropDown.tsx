@@ -1,10 +1,10 @@
+import React from "react";
 import { Menu, Transition } from "@headlessui/react";
 import {
   CheckIcon,
   ChevronDownIcon,
   ChevronUpIcon,
 } from "@heroicons/react/20/solid";
-import { Fragment } from "react";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -37,7 +37,7 @@ export default function DropDown({ vibe, setVibe }: DropDownProps) {
       </div>
 
       <Transition
-        as={Fragment}
+        as={React.Fragment}
         enter="transition ease-out duration-100"
         enterFrom="transform opacity-0 scale-95"
         enterTo="transform opacity-100 scale-100"

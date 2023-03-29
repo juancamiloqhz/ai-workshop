@@ -1,6 +1,7 @@
 // import { jsx as _jsx } from 'react/jsx-runtime'
 import React from "react";
 import cn from "clsx";
+
 const variants = {
   h1: "text-5xl font-bold tracking-tight",
   h2: "text-4xl font-semibold tracking-tight",

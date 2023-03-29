@@ -1,13 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
-import useScroll from "@/lib/hooks/use-scroll";
-import Meta from "./meta";
-import { Github } from "@/shared/icons";
-import { useSignInModal } from "./sign-in-modal";
 import { AnimatePresence, motion } from "framer-motion";
+import { useSession } from "next-auth/react";
+
 import { FADE_IN_ANIMATION_SETTINGS } from "@/lib/constants";
+import useScroll from "@/lib/hooks/use-scroll";
+import { Github } from "@/components/shared/icons";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
+import Meta from "./meta";
+import { useSignInModal } from "./sign-in-modal";
 import UserDropdown from "./user-dropdown";
 
 export default function Layout({
@@ -48,16 +51,18 @@ export default function Layout({
             ></Image>
             <p>AI Workshop</p>
           </Link>
-          <div>
+          <div className="flex items-center space-x-2">
+            <ThemeToggle />
             <AnimatePresence>
               {!session && status !== "loading" ? (
-                <motion.button
-                  className="rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"
-                  onClick={() => setShowSignInModal(true)}
+                <motion.div
+                  // className="rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"
                   {...FADE_IN_ANIMATION_SETTINGS}
                 >
-                  Sign In
-                </motion.button>
+                  <Button onClick={() => setShowSignInModal(true)}>
+                    Sign In
+                  </Button>
+                </motion.div>
               ) : (
                 <UserDropdown />
               )}

@@ -1,11 +1,11 @@
-import Link from "next/link";
-import { NextPage } from "next";
-import Layout from "@/shared/layout";
-import { motion } from "framer-motion";
-import { FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
-import Balancer from "react-wrap-balancer";
-import Card from "@/components/home/card";
 import React from "react";
+import { NextPage } from "next";
+import { motion } from "framer-motion";
+import Balancer from "react-wrap-balancer";
+
+import { FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
+import Card from "@/components/home/card";
+import Layout from "@/components/shared/layout";
 
 const Home: NextPage = () => {
   React.useEffect(() => {

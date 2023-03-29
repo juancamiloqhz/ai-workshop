@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
-import { Button } from "./Button";
-import { type ChatGPTMessage, ChatLine, LoadingChatLine } from "./ChatLine";
+import React from "react";
 import { useCookies } from "react-cookie";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ChatLine, LoadingChatLine, type ChatGPTMessage } from "./ChatLine";
 
 const COOKIE_NAME = "nextjs-example-ai-chat-gpt3";
 
@@ -14,8 +16,8 @@ export const initialMessages: ChatGPTMessage[] = [
 ];
 
 const InputMessage = ({ input, setInput, sendMessage }: any) => (
-  <div className="clear-both mt-6 flex">
-    <input
+  <div className="clear-both mt-6 flex items-center space-x-2">
+    <Input
       type="text"
       aria-label="chat input"
       required
@@ -33,7 +35,7 @@ const InputMessage = ({ input, setInput, sendMessage }: any) => (
     />
     <Button
       type="submit"
-      className="ml-4 flex-none"
+      className="flex-none"
       onClick={() => {
         sendMessage(input);
         setInput("");
@@ -45,12 +47,13 @@ const InputMessage = ({ input, setInput, sendMessage }: any) => (
 );
 
 export default function Chat() {
-  const [messages, setMessages] = useState<ChatGPTMessage[]>(initialMessages);
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [messages, setMessages] =
+    React.useState<ChatGPTMessage[]>(initialMessages);
+  const [input, setInput] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
   const [cookie, setCookie] = useCookies([COOKIE_NAME]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!cookie[COOKIE_NAME]) {
       // generate a semi random short id
       const randomId = Math.random().toString(36).substring(7);
@@ -60,58 +63,57 @@ export default function Chat() {
 
   // send message to API /api/chat endpoint
   const sendMessage = async (message: string) => {
-    if (input) {
-      setLoading(true);
-      const newMessages = [
-        ...messages,
-        { role: "user", content: message } as ChatGPTMessage,
-      ];
-      setMessages(newMessages);
-      const last10messages = newMessages.slice(-10); // remember last 10 messages
+    if (!input) return;
+    setLoading(true);
+    const newMessages = [
+      ...messages,
+      { role: "user", content: message } as ChatGPTMessage,
+    ];
+    setMessages(newMessages);
+    const last10messages = newMessages.slice(-10); // remember last 10 messages
 
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          messages: last10messages,
-          user: cookie[COOKIE_NAME],
-        }),
-      });
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        messages: last10messages,
+        user: cookie[COOKIE_NAME],
+      }),
+    });
 
-      console.log("Edge function returned.");
+    console.log("Edge function returned.");
 
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
 
-      // This data is a ReadableStream
-      const data = response.body;
-      if (!data) {
-        return;
-      }
+    // This data is a ReadableStream
+    const data = response.body;
+    if (!data) {
+      return;
+    }
 
-      const reader = data.getReader();
-      const decoder = new TextDecoder();
-      let done = false;
+    const reader = data.getReader();
+    const decoder = new TextDecoder();
+    let done = false;
 
-      let lastMessage = "";
+    let lastMessage = "";
 
-      while (!done) {
-        const { value, done: doneReading } = await reader.read();
-        done = doneReading;
-        const chunkValue = decoder.decode(value);
+    while (!done) {
+      const { value, done: doneReading } = await reader.read();
+      done = doneReading;
+      const chunkValue = decoder.decode(value);
 
-        lastMessage = lastMessage + chunkValue;
+      lastMessage = lastMessage + chunkValue;
 
-        setMessages([
-          ...newMessages,
-          { role: "assistant", content: lastMessage } as ChatGPTMessage,
-        ]);
+      setMessages([
+        ...newMessages,
+        { role: "assistant", content: lastMessage } as ChatGPTMessage,
+      ]);
 
-        setLoading(false);
-      }
+      setLoading(false);
     }
   };
 

@@ -1,8 +1,9 @@
-import Modal from "@/components/shared/modal";
-import { signIn } from "next-auth/react";
 import React from "react";
-import { LoadingDots, Google } from "@/shared/icons";
 import Image from "next/image";
+import { signIn } from "next-auth/react";
+
+import { Google, LoadingDots } from "@/components/shared/icons";
+import Modal from "@/components/shared/modal";
 
 const SignInModal = ({
   showSignInModal,

@@ -1,5 +1,6 @@
-import { type ChatGPTMessage } from "@/components/chat/ChatLine";
 import { OpenAIStream, OpenAIStreamPayload } from "@/utils/OpenAIStream";
+
+import { type ChatGPTMessage } from "@/components/chat/ChatLine";
 
 // break the app if the API key is missing
 if (!process.env.OPENAI_API_KEY) {

@@ -1,6 +1,7 @@
 import { NextPage } from "next";
-import Text from "@/components/shared/Text";
+
 import Chat from "@/components/chat/Chat";
+import Text from "@/components/shared/Text";
 import Layout from "@/components/shared/layout";
 
 const ChatPage: NextPage = () => {

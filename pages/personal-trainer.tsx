@@ -2,16 +2,13 @@ import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { Loader2 } from "lucide-react";
 import { Toaster, toast } from "react-hot-toast";
 
-import { Github } from "@/components/shared/icons";
+import { Github, LoadingDots } from "@/components/shared/icons";
 import Layout from "@/components/shared/layout";
 import DropDown, { VibeType } from "@/components/twitter-bio/DropDown";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 
-const TwitterBio: NextPage = () => {
+const PersonalTrainer: NextPage = () => {
   const [loading, setLoading] = React.useState(false);
   const [bio, setBio] = React.useState("");
   const [vibe, setVibe] = React.useState<VibeType>("Professional");
@@ -34,8 +31,8 @@ const TwitterBio: NextPage = () => {
     bio.slice(-1) === "." ? "" : "."
   }`;
 
-  const generateBio = async () => {
-    if (bio.length === 0) return;
+  const generateBio = async (e: any) => {
+    e.preventDefault();
     setGeneratedBios("");
     setLoading(true);
     const response = await fetch("/api/twitter-bio/generate", {
@@ -75,7 +72,7 @@ const TwitterBio: NextPage = () => {
   return (
     <Layout>
       <Head>
-        <title>Twitter Bio Generator</title>
+        <title>Personal Trainer</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -110,13 +107,13 @@ const TwitterBio: NextPage = () => {
               .
             </p>
           </div>
-          <Textarea
+          <textarea
             value={bio}
             onChange={(e) => setBio(e.target.value)}
             rows={4}
             className="my-5 w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black"
             placeholder={
-              "e.g. Entrepreneur, software and mechanical engineer, and professional pyrotechnician. I'm like a firework, always exploding with new ideas."
+              "e.g. Senior Developer Advocate @vercel. Tweeting about web development, AI, and React / Next.js. Writing nutlope.substack.com."
             }
           />
           <div className="mb-5 flex items-center space-x-3">
@@ -128,14 +125,20 @@ const TwitterBio: NextPage = () => {
           </div>
 
           {!loading && (
-            <Button onClick={generateBio} className="mt-8 w-full">
+            <button
+              className="mt-8 w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 sm:mt-10"
+              onClick={(e) => generateBio(e)}
+            >
               Generate your bio &rarr;
-            </Button>
+            </button>
           )}
           {loading && (
-            <Button disabled className="mt-8 w-full">
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            </Button>
+            <button
+              className="mt-8 w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 sm:mt-10"
+              disabled
+            >
+              <LoadingDots color="white" />
+            </button>
           )}
         </div>
         <Toaster
@@ -184,4 +187,4 @@ const TwitterBio: NextPage = () => {
   );
 };
 
-export default TwitterBio;
+export default PersonalTrainer;

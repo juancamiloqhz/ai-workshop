@@ -1,13 +1,15 @@
+import React from "react";
 import Head from "next/head";
-import { useState } from "react";
 import Image from "next/image";
-import { Button } from "@/components/chat/Button";
+
 import Layout from "@/components/shared/layout";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function NameMyPet() {
-  const [loading, setLoading] = useState(false);
-  const [animalInput, setAnimalInput] = useState("");
-  const [result, setResult] = useState();
+  const [loading, setLoading] = React.useState(false);
+  const [animalInput, setAnimalInput] = React.useState("");
+  const [result, setResult] = React.useState();
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -58,14 +60,15 @@ export default function NameMyPet() {
         />
         <h3>Name my pet</h3>
         <form onSubmit={onSubmit} className="flex flex-col">
-          <input
+          <Input
             type="text"
             name="animal"
             placeholder="Enter an animal"
             value={animalInput}
             onChange={(e) => setAnimalInput(e.target.value)}
+            required
           />
-          <Button type="submit">
+          <Button type="submit" className="mt-8">
             {loading ? "Generating..." : "Generate names"}
           </Button>
         </form>

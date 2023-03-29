@@ -1,11 +1,12 @@
 import React from "react";
-import { signOut, useSession } from "next-auth/react";
-import { LayoutDashboard, LogOut } from "lucide-react";
-import Popover from "@/components/shared/popover";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { FADE_IN_ANIMATION_SETTINGS } from "@/lib/constants";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { LayoutDashboard, LogOut } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
+
+import { FADE_IN_ANIMATION_SETTINGS } from "@/lib/constants";
+import Popover from "@/components/shared/popover";
 
 export default function UserDropdown() {
   const { data: session } = useSession();
