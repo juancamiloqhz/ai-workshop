@@ -59,7 +59,6 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("@headlessui/tailwindcss"),
     require("@tailwindcss/typography"),
-    require("@tailwindcss/line-clamp"),
     require("tailwindcss-animate"),
     plugin(({ addVariant }) => {
       addVariant("radix-side-top", '&[data-side="top"]');

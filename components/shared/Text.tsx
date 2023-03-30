@@ -3,7 +3,7 @@ import React from "react";
 import cn from "clsx";
 
 const variants = {
-  h1: "text-5xl font-bold tracking-tight",
+  h1: "bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent drop-shadow-sm dark:from-white dark:to-slate-500 md:text-7xl md:leading-[5rem]",
   h2: "text-4xl font-semibold tracking-tight",
   description: "text-lg font-medium tracking-tight text-accents-5",
   body: "text-base font-normal",

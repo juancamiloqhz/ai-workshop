@@ -32,11 +32,11 @@ export default function Layout({
     <>
       <Meta {...meta} />
       <SignInModal />
-      <div className="fixed h-screen w-full bg-gradient-to-br from-violet-200 via-blue-50 to-rose-200" />
+      <div className="fixed h-screen w-full bg-gradient-to-br from-violet-200 via-blue-50 to-rose-200 dark:from-cyan-950 dark:via-sky-950 dark:to-blue-950" />
       <header
         className={`fixed top-0 w-full ${
           scrolled
-            ? "border-b border-gray-200 bg-white/50 backdrop-blur-xl"
+            ? "border-b border-gray-200 bg-white/50 backdrop-blur-xl dark:border-gray-700 dark:bg-slate-800/50"
             : "bg-white/0"
         } z-30 transition-all`}
       >
@@ -49,7 +49,9 @@ export default function Layout({
               height="38"
               className="mr-2 rounded-sm"
             ></Image>
-            <p>AI Workshop</p>
+            <p className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-bold text-transparent drop-shadow-sm dark:from-white dark:to-slate-500">
+              AI Workshop
+            </p>
           </Link>
           <div className="flex items-center space-x-2">
             <ThemeToggle />
@@ -98,7 +100,7 @@ export default function Layout({
       <div className="relative flex min-h-screen w-full flex-col items-center justify-center py-32">
         {children}
       </div>
-      <footer className="absolute w-full border-t border-gray-200 bg-white py-5 text-center">
+      <footer className="absolute w-full border-t border-gray-200 bg-white py-5 text-center dark:border-gray-800 dark:bg-slate-900">
         <p className="text-gray-500">
           Powered by{" "}
           <a

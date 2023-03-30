@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Loader2 } from "lucide-react";
 import { Toaster, toast } from "react-hot-toast";
 
+import Text from "@/components/shared/Text";
 import { Github } from "@/components/shared/icons";
 import Layout from "@/components/shared/layout";
 import DropDown, { VibeType } from "@/components/twitter-bio/DropDown";
@@ -82,16 +83,16 @@ const TwitterBio: NextPage = () => {
       <div className="mt-12 flex w-full flex-1 flex-col items-center justify-center px-4 text-center sm:mt-20">
         <a
           className="mb-5 flex max-w-fit items-center justify-center space-x-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-gray-600 shadow-md transition-colors hover:bg-gray-100"
-          href="https://github.com/Nutlope/twitterbio"
+          href="https://github.com/juancamiloqhz/ai-workshop"
           target="_blank"
           rel="noopener noreferrer"
         >
           <Github />
           <p>Star on GitHub</p>
         </a>
-        <h1 className="max-w-[708px] text-4xl font-bold text-slate-900 sm:text-6xl">
+        <Text variant="h1" className="max-w-[908px]">
           Generate your next Twitter bio using chatGPT
-        </h1>
+        </Text>
         <p className="mt-5 text-slate-500">47,118 bios generated so far.</p>
         <div className="w-full max-w-xl">
           <div className="mt-10 flex items-center space-x-3">

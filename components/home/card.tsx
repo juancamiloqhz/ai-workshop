@@ -16,7 +16,7 @@ export default function Card({
     <Link href={link} className="card snake">
       {/* <div className="flex h-60 items-center justify-center">{demo}</div> */}
       <div className="inner">
-        <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-3xl font-bold !leading-none text-transparent md:text-3xl md:font-normal">
+        <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-3xl font-bold !leading-none text-transparent dark:from-white dark:to-slate-500 md:text-3xl md:font-normal">
           <Balancer>{title}</Balancer>
         </h2>
 

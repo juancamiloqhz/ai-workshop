@@ -5,6 +5,7 @@ import Balancer from "react-wrap-balancer";
 
 import { FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
 import Card from "@/components/home/card";
+import Text from "@/components/shared/Text";
 import Layout from "@/components/shared/layout";
 
 const Home: NextPage = () => {
@@ -64,12 +65,11 @@ const Home: NextPage = () => {
           },
         }}
       >
-        <motion.h1
-          className="bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent drop-shadow-sm md:text-7xl md:leading-[5rem]"
-          variants={FADE_DOWN_ANIMATION_VARIANTS}
-        >
-          <Balancer>Collection of AI Examples</Balancer>
-        </motion.h1>
+        <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS}>
+          <Text variant="h1" className="max-w-[908px]">
+            <Balancer>Collection of AI Examples</Balancer>
+          </Text>
+        </motion.div>
         <motion.p
           className="mt-6 text-center text-gray-500 md:text-xl"
           variants={FADE_DOWN_ANIMATION_VARIANTS}
@@ -112,5 +112,10 @@ const examples = [
     title: "Name My Pet",
     description: "Generate a name for your pet using GPT-3",
     link: "/name-my-pet",
+  },
+  {
+    title: "Personal Training Plan",
+    description: "Generate a Personal Training Plan using GPT-3",
+    link: "/personal-training-plan",
   },
 ];

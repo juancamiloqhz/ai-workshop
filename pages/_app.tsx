@@ -1,8 +1,7 @@
 import type { AppProps } from "next/app";
-import { Inter as FontSans } from "@next/font/google";
-import localFont from "@next/font/local";
+import { Inter as FontSans } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
-import cx from "clsx";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 import { Provider as RWBProvider } from "react-wrap-balancer";
